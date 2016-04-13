@@ -2,7 +2,7 @@
 Description=Renew Let's Encrypt certificate (nginx)
 
 [Timer]
-OnCalendar=weekly
+OnCalendar=monthly
 Persistent=true
 
 [Install]
