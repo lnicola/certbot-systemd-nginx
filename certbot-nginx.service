@@ -1,9 +1,9 @@
 [Unit]
-Description=Renew Let's Encrypt certificate (nginx)
+Description=Renew Certbot certificate (nginx)
 After=network-online.target
 
 [Service]
 Type=oneshot
 ExecStartPre=/usr/bin/systemctl stop nginx
-ExecStart=/usr/bin/letsencrypt renew --standalone --keep-until-expiring
+ExecStart=/usr/bin/certbot renew --standalone --keep-until-expiring
 ExecStartPost=/usr/bin/systemctl --no-block start nginx

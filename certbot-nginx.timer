@@ -1,5 +1,5 @@
 [Unit]
-Description=Renew Let's Encrypt certificate (nginx)
+Description=Renew Certbot certificate (nginx)
 
 [Timer]
 OnCalendar=monthly
