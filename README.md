@@ -2,7 +2,7 @@
 This is a small `systemd` unit for automating the Certbot certificate renewal for the nginx web server.
 It runs monthly and simply executes
 
-    certbot renew --standalone --keep-until-expiring
+    certbot renew --standalone
 
 It uses the standalone authenticator, because Certbot nginx support is incomplete. This requires the
 web server to be stopped for a couple of seconds during each run (monthly, but can be overridden) and
