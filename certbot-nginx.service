@@ -1,9 +1,8 @@
 [Unit]
-Description=Renew Certbot certificate (nginx)
+Description=Renew Certbot certificates (nginx)
 After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStartPre=/bin/systemctl stop nginx
-ExecStart=/usr/bin/certbot renew --standalone
-ExecStopPost=/bin/systemctl --no-block start nginx
+ExecStart=/usr/bin/certbot renew
+ExecStopPost=/bin/systemctl --no-block reload nginx

@@ -2,8 +2,9 @@
 Description=Renew Certbot certificate (nginx)
 
 [Timer]
-OnCalendar=monthly
+OnCalendar=daily
 Persistent=true
+RandomizedDelaySec=86400
 
 [Install]
 WantedBy=multi-user.target

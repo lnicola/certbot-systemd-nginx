@@ -1,12 +1,14 @@
 # certbot-systemd-nginx
 This is a small `systemd` unit for automating the Certbot certificate renewal for the nginx web server.
-It runs monthly and simply executes
+It runs daily with a random delay and simply executes
 
-    certbot renew --standalone
+    certbot renew
 
-It uses the standalone authenticator, because Certbot nginx support is incomplete. This requires the
-web server to be stopped for a couple of seconds during each run (monthly, but can be overridden) and
-a bit more during renewal (once every two months).
+It uses the Certbot settings from the last execution. The `webroot` or `nginx` authenticators are
+recommende since this unit no longer stops `nginx`. If you are using the `standalone` mode, `certbot`
+will not be able to bind to the `HTTP` port.
+
+Please see the Certbot documentation for information about migrating to another authenticator.
 
 # Installation
 ## Arch Linux
@@ -18,5 +20,5 @@ location:
 
     # cp certbot-nginx.{service,timer} /etc/systemd/system/
     # systemctl daemon-reload
-    # systemctl start certbot-nginx.service # to start manually
+    # systemctl start certbot-nginx.service # to run manually
     # systemctl enable --now certbot-nginx.timer # to use the timer
