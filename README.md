@@ -28,7 +28,8 @@ configuration file (`/etc/nginx/nginx.conf` or similar).
 If you are hosting a site, edit the configuration file and add the following lines:
 
     location ~ /.well-known {
-        allow all;
+        allow all; # if using address restrictions
+        auth_basic off; # using basic authentication
     }
 
 If you're running a reverse proxy, pick a directory, create it and set it as root:
@@ -36,6 +37,7 @@ If you're running a reverse proxy, pick a directory, create it and set it as roo
     location ~ /.well-known {
         root /var/www/html;
         allow all;
+        auth_basic off;
     }
 
 After making the changes, test and reload the new configuration:
