@@ -4,4 +4,4 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/certbot renew --deploy-hook "systemctl reload nginx"
+ExecStart=/usr/bin/certbot renew --nginx --deploy-hook "systemctl reload nginx"
